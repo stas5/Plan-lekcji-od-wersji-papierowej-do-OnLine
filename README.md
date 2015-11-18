@@ -2,7 +2,7 @@
 
 <p>
 Aplikacja umożliwiająca przygotowanie planu lekcji szkoły 
-w wersji dostępnej online dla każdego użytkownika www.
+w wersji dostępnej online dla każdego użytkownika <a href="http://www.nuke.2lo.wlodawa.pl/plan.php" target="_blank">www</a>.
 </p>
 
 
@@ -35,5 +35,3 @@ Pliki 2 3 i 4 powinny być umieszczone na serwerze www z obsuga php i
 zawierajcego tabele klasa po wykonaniu polecen
 z pliku tabela.sql i zaimportowaniu pliku plik.
 </p>
-
-
