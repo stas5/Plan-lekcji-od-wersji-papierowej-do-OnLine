@@ -21,17 +21,23 @@ W skad projektu wchodzą następujace pliki:
 </ol>
 
 <p>
-Plik 1 zawiera tabele z planem drukowane i wieszane na tablicy z planem szkoly.
-W pliku tym znajduje sie program utowrzony w jezyku VBA umozliwiajacy wygenerowanie pliku
-plik bez rozszerzenia zawierajacy informacje o kazdej godzinie lekcyjnej w danej szkole.
-Plik powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. podanego 
+Plik 1 zawiera tabele z planem drukowane i wieszane na tablicy z planem szkoły.
+W pliku tym znajduje się program utowrzony w jezyku VBA umożliwiajacy wygenerowanie pliku
+<blockquote>
+    plik
+</blockquote> bez rozszerzenia, zawierajacego informacje o każdej godzinie 
+lekcyjnej w danej szkole.
+Plik powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. zawartego 
 wzorca.
 </p>
 
 
 <p>
-Plik ten powinien być zaimportowany do tabeli klasa serwera WWW bazy danych MySql.
+Plik 5 powinien być zaimportowany do tabeli <blockquote>
+                                                klasa
+                                            </blockquote> serwera WWW bazy danych MySql.
 Pliki 2 3 i 4 powinny być umieszczone na serwerze www z obsuga php i 
-zawierajcego tabele klasa po wykonaniu polecen
-z pliku tabela.sql i zaimportowaniu pliku plik.
+zawierajcego tabelę klasa po wykonaniu poleceń
+z pliku <q>tabela.sql</q> i zaimportowaniu pliku <q>plik</q>.
 </p>
+
