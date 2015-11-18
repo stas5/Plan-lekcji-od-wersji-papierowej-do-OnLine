@@ -2,7 +2,7 @@
 
 <p>
 Aplikacja umożliwiająca przygotowanie planu lekcji szkoły 
-w wersji dostępnej online dla każdego użytkownika <a href="http://www.nuke.2lo.wlodawa.pl/plan.php" target="_blank">www</a>.
+w wersji dostępnej online dla każdego użytkownika - tutaj przykad wykonania <a href="http://www.nuke.2lo.wlodawa.pl/plan.php" target="_blank">www</a>.
 </p>
 
 
@@ -27,7 +27,7 @@ W pliku tym znajduje się program utowrzony w jezyku VBA umożliwiajacy wygenero
     plik
 </blockquote> bez rozszerzenia, zawierajacego informacje o każdej godzinie 
 lekcyjnej w danej szkole.
-Plik powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. zawartego 
+Plik 1 powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. zawartego 
 wzorca.
 </p>
 
@@ -40,4 +40,3 @@ Pliki 2 3 i 4 powinny być umieszczone na serwerze www z obsuga php i
 zawierajcego tabelę klasa po wykonaniu poleceń
 z pliku <q>tabela.sql</q> i zaimportowaniu pliku <q>plik</q>.
 </p>
-
