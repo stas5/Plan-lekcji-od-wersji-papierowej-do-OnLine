@@ -36,7 +36,7 @@ unikatowe, tzn. jednoznacznie przypisane do nauczyciela, klasy, sali i przedmiot
 `nauczyciel` char(5) NOT NULL
 W przypadku braku tabeli należy utworzyć kopię istniejącej i dodać do niej klasę,
 lub klasy.
-Ostatnia lekcja ostatniej z ostatniej wprowadzonej klasy w tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
+Ostatnia lekcja z ostatniej wprowadzonej klasy w tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
 </p>
 <p>
 Plik 5 powinien być zaimportowany do bazy danych MySQL serwera WWW np. z poziomou PHPMyAdmina.
