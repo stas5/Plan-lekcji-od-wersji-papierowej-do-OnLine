@@ -16,27 +16,26 @@ W skad projektu wchodzą następujace pliki:
 <li> plan.php</li>
 <li> conect.php</li>
 <li> styl.css</li>
-<li> plik</li>
-<li>tabela.sql</li>
+<li> plik.sql</li>
 </ol>
 
 <p>
-Plik 1 zawiera tabele z planem drukowane i wieszane na tablicy z planem szkoły.
+Plik 1 w formacie MSWord zawiera tabele z planem drukowane i wieszane na tablicy z planem szkoły.
 W pliku tym znajduje się program utowrzony w jezyku VBA umożliwiajacy wygenerowanie pliku
 <blockquote>
-    plik
-</blockquote> bez rozszerzenia, zawierajacego informacje o każdej godzinie 
-lekcyjnej w danej szkole.
+    plik.sql
+</blockquote> zawierającego instrukcje sql usuwające tabelę szkola jeżeli taka istnieje, tworzące tabelę na nowo, 
+oraz dodające informacje o każdej godzinie lekcyjnej każdej klasy szkoły.
 Plik 1 powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. zawartego 
-wzorca.
+wzorca. W przypadku braku tabeli należy utworzyć kopię istniejącej i dodać do niej klasę,
+lub klasy.
+Ostatnia lekcja ostatniej klasy z tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany 
+jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
 </p>
-
-
 <p>
-Plik 5 powinien być zaimportowany do tabeli <blockquote>
-                                                klasa
-                                            </blockquote> serwera WWW bazy danych MySql.
-Pliki 2 3 i 4 powinny być umieszczone na serwerze www z obsuga php i 
-zawierajcego tabelę klasa po wykonaniu poleceń
-z pliku <q>tabela.sql</q> i zaimportowaniu pliku <q>plik</q>.
+Plik 5 powinien być zaimportowany do bazy danych MySQL serwera WWW np. z poziomou PHPMyAdmina.
+Pliki 2 3 i 4 powinny być umieszczone i udostepnione do odczytu na serwerze www z obsugą PHP.
 </p>
+Plik conect.php powinien zawierać parametry dostepu do bazy danych, host i ewentualnie port - użytkownik i haslo dla 
+danej szkoly oraz nazwe bazy danych.
+
