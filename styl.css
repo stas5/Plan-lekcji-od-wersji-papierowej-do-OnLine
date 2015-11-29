@@ -1,0 +1,64 @@
+table.dzien tr td{
+padding-left:5px;
+}
+table.dzien caption{
+background-color:silver;
+font: italic bold 12px/30px Georgia, serif;
+color:red;
+}
+#f {
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+#p {
+  margin-right: auto;
+  width: 570px;
+  min-height: 1024px;
+  margin-left: auto;
+}
+table {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+a, p, td  {
+ 	font-family: Tahoma, Arial CE, Arial, Helvetica, Verdana, Geneva;
+ 	font-generic : serif;
+ 	font-style : normal;
+ 	font-weight : normal;
+ 	text-decoration : none;
+ 	font-size : 9.5pt;
+	color : black;
+ 	} 
+p, td {color : black; font size : 15;  } (czionka podstawowa)
+ 
+small { font-size : 8.5pt;}
+ 
+
+a:link, a:visited {
+ 	text-decoration : none;
+ 	font-family: Tahoma, Arial CE, Arial, Helvetica, Verdana, Geneva;
+ 	font-generic : serif;
+ 	font-style : normal;
+ 	color : green; (#FE5252;)
+	font-size : 9.5pt;}
+
+ul  {list-style: url(img/kropka.gif);}
+
+a:hover  {text-decoration : none;color=#FFE44D; background-color: #004A66;}
+a:active {color: white; background-color: black;}   
+
+.menulinks {text-decoration: none; font-size : 10pt;}
+.menuprawo {text-decoration: none; font-size : 8.5pt;}
+a:hover.menulinks, a:hover.menuprawo  {background-color: #FFE4DC;}
+a:link.menulinks, a:link.menuprawo, a:visited.menulinks, a:visited.menuprawo  {
+        text-decoration : none;
+ 	font-family: Tahoma, Arial CE, Arial, Helvetica, Verdana, Geneva;
+ 	font-generic : serif;
+ 	font-style : none;
+	font-size : 10pt;
+ 	color : #FE7166;
+ }
+
