@@ -27,10 +27,16 @@ W pliku tym znajduje się program utowrzony w jezyku VBA umożliwiajacy wygenero
 </blockquote> zawierającego instrukcje sql usuwające tabelę szkola jeżeli taka istnieje, tworzące tabelę na nowo, 
 oraz dodające informacje o każdej godzinie lekcyjnej każdej klasy szkoły.
 Plik 1 powinien zawierać tabele z planami poszczególnych klas w danej szkole wg. zawartego 
-wzorca. W przypadku braku tabeli należy utworzyć kopię istniejącej i dodać do niej klasę,
+wzorca. Tworząc skróty nazw przedmiotów, nauczycieli, sal lekcyjnych, i klas należy pamiętać
+aby nie przekroczyć rozmiaru pól z tabeli MySQL szkola, oraz o tym, że skróty powinny być
+unikatowe, tzn. jednoznacznie przypisane do nauczyciela, klasy, sali i przedmiotu.
+`przedmiot` char(15) NOT NULL,
+`sala` char(5) NOT NULL,
+`klasa` char(16) NOT NULL,
+`nauczyciel` char(5) NOT NULL
+W przypadku braku tabeli należy utworzyć kopię istniejącej i dodać do niej klasę,
 lub klasy.
-Ostatnia lekcja ostatniej klasy z tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany 
-jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
+Ostatnia lekcja ostatniej z ostatniej wprowadzonej klasy w tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
 </p>
 <p>
 Plik 5 powinien być zaimportowany do bazy danych MySQL serwera WWW np. z poziomou PHPMyAdmina.
