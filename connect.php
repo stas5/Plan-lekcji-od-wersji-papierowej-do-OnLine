@@ -1,6 +1,6 @@
 <?
 mysql_connect ("host:port", "login", "haslo") or
- die ("Nie mo¿na po³¹czyæ");
+ die ("Nie moÅ¼na poÅ‚Ä…czyÄ‡");
  mysql_select_db("baza_danych")or
- die ("Nie mo¿na po³¹czyæ z baz¹");
+ die ("Nie moÅ¼na poÅ‚Ä…czyÄ‡ z bazÄ…");
 ?>

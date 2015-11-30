@@ -30,13 +30,17 @@ Plik 1 powinien zawierać tabele z planami poszczególnych klas w danej szkole w
 wzorca. Tworząc skróty nazw przedmiotów, nauczycieli, sal lekcyjnych, i klas należy pamiętać
 aby nie przekroczyć rozmiaru pól z tabeli MySQL szkola, oraz o tym, że skróty powinny być
 unikatowe, tzn. jednoznacznie przypisane do nauczyciela, klasy, sali i przedmiotu.
-`przedmiot` char(15) NOT NULL,
-`sala` char(5) NOT NULL,
-`klasa` char(16) NOT NULL,
-`nauczyciel` char(5) NOT NULL
+`przedmiot` char(15),<br />
+`sala` char(5) ,<br />
+`klasa` char(16) ,<br />
+`nauczyciel` char(5) <br />
 W przypadku braku tabeli należy utworzyć kopię istniejącej i dodać do niej klasę,
 lub klasy.
-Ostatnia lekcja z ostatniej wprowadzonej klasy w tabeli powinna być sformatowana czcionką w kolorze czerwonym, na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
+Aplikacja VBA umożliwia także wygenerowanie unikatowych skrótów dla nauczycieli i przedmiotów,
+przed ukończeniem tworzenia pliku *.sql, pyta czy usunąć istniejące skróty i utworzyć je na nowo.
+Ostatnia lekcja z ostatniej wprowadzonej klasy w ostatniej wypełnianej tabeli powinna 
+być sformatowana czcionką w kolorze czerwonym, 
+na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
 </p>
 <p>
 Plik 5 powinien być zaimportowany do bazy danych MySQL serwera WWW np. z poziomou PHPMyAdmina.
