@@ -1,0 +1,230 @@
+Public Sub dziel()
+i = 0
+FileNumber = FreeFile
+nrplik = 1
+Dim sal, nau, prz, zbncz(200), zbprz(200)
+Dim b() As Byte
+Dim ost As Boolean
+ost = False
+Dim kolor
+ile = 0
+ilp = 0
+ileg = 0
+lg = 8
+wstaw = "INSERT INTO `szkola` (`dzien`, `godzina`, `przedmiot`, `sala`, `klasa`, `nauczyciel`) VALUES" & vbCrLf
+Open "plik.sql" For Binary Access Write Lock Read Write As #FileNumber
+wynik = "DROP TABLE IF EXISTS `szkola`;" & vbCrLf _
+& "CREATE TABLE IF NOT EXISTS `szkola` (" & vbCrLf _
+ & "`dzien` int(11) NOT NULL," & vbCrLf _
+  & "`godzina` int(11) NOT NULL," & vbCrLf _
+  & "`przedmiot` char(15) NOT NULL," & vbCrLf _
+  & "`sala` char(5) NOT NULL," & vbCrLf _
+  & "`klasa` char(16) NOT NULL," & vbCrLf _
+  & "`nauczyciel` char(5) NOT NULL" & vbCrLf _
+& ") ENGINE=InnoDB DEFAULT CHARSET=utf8;" & vbCrLf
+wynik = wynik & wstaw
+getUtf8 wynik, b
+Put #FileNumber, , b
+ileg = 0
+For Each at In ActiveDocument.Tables ' dla każdej tabeli w dokumencie
+    Dim por
+    Dim pyt
+    por = at.Cell(1, 1)
+    por = Left(por, Len(por) - 2)
+    If por = "nr" Then 'tabela zawierająca skróty nazw nauczycieli lub przedmiotów
+        pyt = MsgBox("Czy usunąć zestawienia" & vbCrLf & " skrótów nauczycieli lub przedmiotów?", vbYesNo, "Pytanie")
+        If pyt = vbYes Then
+            at.Delete
+        End If
+    Else
+        If at.Columns.Count >= 4 Then
+            kl = at.Cell(1, 2)
+            kl = Left(kl, Len(kl) - 2)
+            l = 1
+            For i = 5 To 5 * lg + 1 Step 9 'dla wszystkich dni planu
+              k = 1
+              For j = i To lg - 1 + i Step 1 'dla każdej godziny
+                tmp = at.Cell(j, 3)
+                tmp = Left(tmp, Len(tmp) - 2)
+                If tmp <> "" Then
+                    tmp = at.Cell(j, 4)
+                    at.Cell(j, 4).Select
+                    kolor = Selection.Font.Color 'sprawdzanie koloru czcionki
+                    prze = Left(tmp, Len(tmp) - 2)
+                    tmp = at.Cell(j, 2)
+                    sala = Left(tmp, Len(tmp) - 2)
+                    tmp = at.Cell(j, 3)
+                    naucz = Left(tmp, Len(tmp) - 2)
+                    nau = Split(naucz, "/")
+                    ln = UBound(nau)
+                    sal = Split(sala, "/")
+                    ls = UBound(sal)
+                    prz = Split(prze, "/")
+                    lp = UBound(prz)
+                    n = 0
+                    For Each naucz In nau
+                        ileg = ileg + 1
+                        wynik = "(" & l & "," & k
+                        wynik = RTrim(wynik)
+                        If lp = ln Then
+                            prze = prz(n)
+                        Else
+                            prze = prz(0)
+                        End If
+                        wynik = wynik & ",'" & prze
+                        If ls = ln Then
+                            sala = sal(n)
+                        Else
+                            sala = sal(0)
+                        End If
+                        wynik = wynik & "','" & sala
+                        wynik = wynik & "','" & kl
+                        If kolor = 255 And n = ln Then
+                           wynik = wynik & "','" & naucz & "');"
+                           Else
+                                If (ileg Mod 400) = 0 Then
+                                  wynik = wynik & "','" & naucz & "');" & vbCrLf & wstaw
+                                Else
+                                  wynik = wynik & "','" & naucz & "')," & vbCrLf
+                                End If
+                            End If
+                        getUtf8 wynik, b
+                        Put #FileNumber, , b
+                        n = n + 1
+                       ele = Filter(zbprz, prze, True)
+                        If niejest(ele, prze) Then
+                           zbprz(ilp) = prze
+                           ilp = ilp + 1
+                        End If
+                        ele = Filter(zbncz, naucz, True)
+                        If niejest(ele, naucz) Then
+                           zbncz(ile) = naucz
+                           ile = ile + 1
+                        End If
+                    Next naucz
+                    k = k + 1
+                End If
+               Next j
+               l = l + 1
+            Next i
+            druga = False
+           If at.Columns.Count <> 4 Then
+                tmp = at.Cell(1, 3)
+                tmp = Left(tmp, Len(tmp) - 2)
+                If tmp <> "" Then
+                druga = True
+                kl = tmp
+                l = 1
+            End If
+        End If ' otwarcie pliku dla drugiej klasy
+        'klasa obok
+        If druga Then
+            For i = 5 To lg * 5 + 1 Step 9
+                k = 1
+                For j = i To lg - 1 + i Step 1
+                    tmp = at.Cell(j, 6)
+                    tmp = Left(tmp, Len(tmp) - 2)
+                    If tmp <> "" Then
+                           tmp = at.Cell(j, 7)
+                            at.Cell(j, 7).Select
+                            kolor = Selection.Font.Color
+                           prze = Left(tmp, Len(tmp) - 2)
+                           tmp = at.Cell(j, 5)
+                           sala = Left(tmp, Len(tmp) - 2)
+                           wynik = wynik & "," & sala
+                           tmp = at.Cell(j, 6)
+                           naucz = Left(tmp, Len(tmp) - 2)
+                            nau = Split(naucz, "/")
+                            ln = UBound(nau)
+                            sal = Split(sala, "/")
+                            ls = UBound(sal)
+                            prz = Split(prze, "/")
+                            lp = UBound(prz)
+                            n = 0
+                            For Each naucz In nau
+                                ileg = ileg + 1
+                                wynik = "(" & l & "," & k
+                                wynik = RTrim(wynik)
+                                If lp = ln Then
+                                    prze = prz(n)
+                                Else
+                                    prze = prz(0)
+                                End If
+                                wynik = wynik & ",'" & prze
+                                If ls = ln Then
+                                    sala = sal(n)
+                                Else
+                                    sala = sal(0)
+                                End If
+                                wynik = wynik & "','" & sala
+                                wynik = wynik & "','" & kl
+                                If kolor = 255 And n = ln Then
+                                    wynik = wynik & "','" & naucz & "');"
+                                Else
+                                    If ileg Mod 400 = 0 Then
+                                      wynik = wynik & "','" & naucz & "');" & vbCrLf & wstaw
+                                    Else
+                                      wynik = wynik & "','" & naucz & "')," & vbCrLf
+                                    End If
+                                End If
+                                getUtf8 wynik, b
+                                Put #FileNumber, , b
+                                n = n + 1
+                                ele = Filter(zbprz, prze, True)
+                                 If niejest(ele, prze) Then
+                                    zbprz(ilp) = prze
+                                    ilp = ilp + 1
+                                 End If
+                                ele = Filter(zbncz, naucz, True)
+                                If niejest(ele, naucz) Then
+                                   zbncz(ile) = naucz
+                                   ile = ile + 1
+                                End If
+                            Next naucz
+                            k = k + 1
+                       End If
+                Next j
+                l = l + 1
+            Next i
+        End If 'koniec druga
+        nrplik = nrplik + 1
+        End If 'koniec gdy kolumn 4 lub wiecej
+      End If ' gdy cell 1 1 = nr
+    Next at 'koniec tabele
+    Dim it, iw
+    Close #FileNumber
+    pyt = MsgBox("czy utworzyć zestawienia" & vbCrLf & " skrótów nauczycieli i przedmiotów", vbYesNo, "Pytanie")
+    If pyt = vbYes Then
+        Selection.EndKey Unit:=wdStory
+        Selection.TypeParagraph
+        ThisDocument.Tables.Add Range:=Selection.Range, NumRows:=ile, NumColumns:=4, _
+        DefaultTableBehavior:=wdWord9TableBehavior, _
+        AutoFitBehavior:=wdAutoFitFixed
+        it = Tables.Count
+        With ThisDocument.Tables(it)
+            .Cell(1, 1).Range.Text = "nr"
+            .Cell(1, 2).Range.Text = "idncz"
+            .Cell(1, 3).Range.Text = "nazwisko"
+            .Cell(1, 4).Range.Text = "imie"
+            For i = 2 To ile Step 1
+                .Cell(i, 1).Range.Text = i - 1
+                .Cell(i, 2).Range.Text = zbncz(i - 2)
+            Next i
+        End With
+        Selection.EndKey Unit:=wdStory
+        Selection.TypeParagraph
+        ThisDocument.Tables.Add Range:=Selection.Range, NumRows:=ilp, NumColumns:=3, _
+        DefaultTableBehavior:=wdWord9TableBehavior, _
+        AutoFitBehavior:=wdAutoFitFixed
+        it = Tables.Count
+        With ThisDocument.Tables(it)
+            .Cell(1, 1).Range.Text = "nr"
+            .Cell(1, 2).Range.Text = "idprz"
+            .Cell(1, 3).Range.Text = "przedmiot"
+            For i = 2 To ilp - 1 Step 1
+                .Cell(i, 1).Range.Text = i - 1
+                .Cell(i, 2).Range.Text = zbprz(i - 2)
+            Next i
+        End With
+    End If
+End Sub

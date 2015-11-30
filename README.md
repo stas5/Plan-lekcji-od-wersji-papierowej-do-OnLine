@@ -17,6 +17,7 @@ W skad projektu wchodzą następujace pliki:
 <li> conect.php</li>
 <li> styl.css</li>
 <li> plik.sql</li>
+<li> funkcja dziel VBA.txt</li>
 </ol>
 
 <p>
@@ -42,6 +43,17 @@ Ostatnia lekcja z ostatniej wprowadzonej klasy w ostatniej wypełnianej tabeli p
 być sformatowana czcionką w kolorze czerwonym, 
 na tej podstawie dodawany jest średnik po ostatniej godzinie lekcyjnej planu w pliku sql.
 </p>
+
+<p>
+Aplikacja VBA uruchamiana jest przyciskiem <blockquote>
+                                               przygotuj plan do www
+                                           </blockquote> dlatego też należyw włączyć możliwość
+                                           uruchamiania makr w opcjach MSWORD.
+Pełny kod funkcji dziel() znajduje się w pliku <abbr title="funkcja dziel VBA.txt">funkcja dziel VBA.txt</abbr>
+Funkcja ta korzysta z kilku dodatkowych funkcji między innymi do konwersji danych na UTF-8, wszystkie
+te funkcje dostępne są w edytorze VBA uruchamianym przez ALT+F11.
+</p>
+
 <p>
 Plik 5 powinien być zaimportowany do bazy danych MySQL serwera WWW np. z poziomou PHPMyAdmina.
 Pliki 2 3 i 4 powinny być umieszczone i udostepnione do odczytu na serwerze www z obsugą PHP.
